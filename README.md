@@ -1,64 +1,90 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Dapur Nasi Biryani Berkah 🥘
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi pemesanan terintegrasi dan panel manajemen (Kasir & Dapur) yang dirancang khusus untuk UMKM Dapur Nasi Biryani Berkah. 
+Menampilkan antarmuka pelanggan bergaya editorial premium (bebas *AI slop*) dengan animasi interaktif, serta dashboard admin yang fungsional untuk mengelola pesanan secara *real-time*.
 
-## About Laravel
+## Fitur Utama
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 🛒 Halaman Pelanggan (Customer Frontend)
+- **Katalog Menu Interaktif:** Desain asimetris dan editorial yang menonjolkan visual produk.
+- **Storytelling Animasi:** Menggunakan GSAP ScrollTrigger untuk interaksi *stop-motion* murni ala *Bite Toothpaste Bits*.
+- **Opsi Layanan Fleksibel:** Mendukung pesanan *Dine-in* (Makan di tempat), *Takeaway* (Bawa Pulang), dan *Delivery* (Pesan Antar).
+- **Checkout & Keranjang Cerdas:** Sinkronisasi keranjang *real-time* (menggunakan LocalStorage) dan kalkulasi otomatis ongkos kirim.
+- **Pelacakan Mandiri & Struk:** Pelanggan dapat melacak status masakan dapur dan mencetak nota struk digital.
+- **Integrasi WhatsApp API:** Konfirmasi pesanan langsung terhubung ke WhatsApp kasir secara otomatis.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 🔐 Panel Pengelola (Admin Dashboard)
+- **Manajemen Pesanan (Live):** Memproses pesanan dari status *Menunggu* -> *Dimasak* -> *Diantar/Disajikan* -> *Selesai*.
+- **Katalog & Kategori:** Menambah, mengubah, dan menonaktifkan menu atau stok makanan.
+- **Laporan Penjualan:** Ringkasan pendapatan dan produk terlaris.
+- **Pengaturan Toko:** Mengubah nomor WhatsApp tujuan, rekening pembayaran, ongkos kirim, dll.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Teknologi yang Digunakan
+- **Backend:** Laravel 9 (PHP 8.0+)
+- **Database:** MySQL
+- **Frontend & Styling:** Tailwind CSS 3
+- **Animasi:** GSAP & ScrollTrigger
+- **Ikon:** FontAwesome
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Panduan Instalasi Lokal
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Ikuti langkah-langkah di bawah ini untuk menjalankan aplikasi ini di komputer Anda (menggunakan XAMPP/Laragon/Valet).
 
-## Laravel Sponsors
+### 1. Clone Repositori
+```bash
+git clone https://github.com/shirogeon/biryani-umkm.git
+cd biryani-umkm
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 2. Instalasi Dependensi (Composer)
+Pastikan Anda sudah menginstal [Composer](https://getcomposer.org/).
+```bash
+composer install
+```
 
-### Premium Partners
+### 3. Konfigurasi Database (.env)
+Copy file `.env.example` menjadi `.env`.
+```bash
+cp .env.example .env
+```
+Buka file `.env` dan sesuaikan nama database Anda:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=umkm_biryani  # Pastikan Anda sudah membuat database kosong dengan nama ini
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 4. Generate App Key & Migrasi Database
+Jalankan perintah ini untuk melakukan inisiasi *key* Laravel, membuat struktur tabel, dan mengisi data awal (*seeding*):
+```bash
+php artisan key:generate
+php artisan migrate:fresh --seed
+```
+*(Catatan: Proses seeding akan otomatis membuatkan akun admin, daftar menu awal, dan pengaturan toko).*
 
-## Contributing
+### 5. Jalankan Aplikasi
+```bash
+php artisan serve
+```
+Aplikasi kini dapat diakses di browser:
+- Halaman Pelanggan: **http://127.0.0.1:8000**
+- Halaman Admin: **http://127.0.0.1:8000/admin**
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## Kredensial Default Admin
+Gunakan akun ini untuk masuk ke Panel Admin setelah proses instalasi dan migrasi selesai:
+- **Email:** `admin@biryani.com`
+- **Password:** `password123`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+## Kontribusi & Lisensi
+Proyek ini dibuat sebagai solusi sistem pemesanan UMKM (*open-source* / *free to use*). Anda bebas melakukan *fork*, memodifikasi, dan menggunakannya untuk bisnis kuliner Anda sendiri.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+*Didesain dan dikembangkan dengan ❤️ untuk kemajuan UMKM Kuliner.*
