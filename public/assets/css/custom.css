@@ -1,0 +1,83 @@
+/* Dapur Nasi Biryani Berkah - Custom Stylesheet */
+:root {
+  --bg-parchment: #FAF7F2;
+  --bg-cream: #F5EFEB;
+  --text-charcoal: #1C1917;
+  --text-muted: #78716C;
+  --saffron-gold: #D97706;
+  --saffron-dark: #B45309;
+  --terracotta: #C2410C;
+  --cardamom: #15803D;
+  --border-warm: #E7E0D3;
+}
+
+body {
+  background-color: var(--bg-parchment);
+  color: var(--text-charcoal);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+.font-serif-display {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+/* Tasteful subtle backdrop accent */
+.bg-warm-canvas {
+  background-color: var(--bg-parchment);
+}
+
+.border-warm {
+  border-color: var(--border-warm);
+}
+
+/* Floating Spices Parallax Elements */
+.spice-float {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.08));
+}
+
+/* Tactile button transition */
+.btn-tactile {
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
+}
+.btn-tactile:hover {
+  transform: translateY(-2px);
+}
+.btn-tactile:active {
+  transform: translateY(0);
+}
+
+/* Drawer transitions */
+.cart-drawer-backdrop {
+  transition: opacity 0.3s ease;
+}
+.cart-drawer-panel {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Print thermal styling */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #print-receipt, #print-receipt * {
+    visibility: visible;
+  }
+  #print-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 80mm;
+    margin: 0;
+    padding: 10px;
+    font-size: 12px;
+    background: #fff;
+    color: #000;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
